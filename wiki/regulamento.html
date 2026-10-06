@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Regulamento Geral · Wiki Asgard</title>
+<meta name="description" content="Regulamento Geral do Asgard: normas de conduta, infrações e penalidades do servidor Survival Fimbul.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: barra lateral fixa + coluna de leitura; no Regulamento, numero do artigo na margem como num codigo */
+:root{
+  --bg:#0e1215; --surface:#14191d; --raised:#1b2126; --line:#2a3238; --line-soft:#20272c;
+  --fg:#ebe5d8; --muted:#a3abb1; --gold:#e2b24a; --gold-ink:#f0c868; --crimson:#8e1a12; --crimson-ink:#e86a5c;
+  --mark:rgba(226,178,74,.18); --focus:#f0c868;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Spectral",Georgia,"Times New Roman",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.075rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-ink);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--fg)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.shell{display:grid;grid-template-columns:17rem minmax(0,1fr);min-height:100vh}
+/* barra lateral */
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--surface);border-right:1px solid var(--line);padding:1.5rem 1.25rem 2rem}
+.brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:var(--fg);margin-bottom:1.75rem}
+.brand img{width:44px;height:44px;flex:none}
+.brand b{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.06em;line-height:1.1}
+.brand span{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav-group{margin-bottom:1.5rem}
+.nav-group h2{font-family:var(--ui);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem}
+.nav-group ul{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.nav-group a{display:block;padding:.4rem .6rem;border-radius:6px;color:var(--fg);text-decoration:none;font-family:var(--ui);font-size:.92rem}
+.nav-group a:hover{background:var(--raised)}
+.nav-group a[aria-current="page"]{background:var(--raised);color:var(--gold-ink);box-shadow:inset 2px 0 0 var(--gold)}
+.side small{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);line-height:1.5;margin-top:2rem}
+/* topo no celular */
+.topbar{display:none}
+/* conteudo */
+.main{min-width:0;padding-inline:clamp(1rem,4vw,3.5rem);padding-block:2.5rem 4rem}
+.wrap{max-width:46rem}
+.wrap.wide{max-width:74rem}
+.crumb{font-family:var(--ui);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;letter-spacing:.03em;margin:0 0 .75rem;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;font-family:var(--ui);font-size:.82rem;color:var(--muted);margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
+.lead{font-size:1.15rem;color:var(--fg);max-width:42rem}
+h2{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.05em;color:var(--gold-ink);margin:2.75rem 0 1rem;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.04em;margin:2rem 0 .75rem;color:var(--fg)}
+p,li{max-width:42rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.3rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em;background:var(--raised);border:1px solid var(--line-soft);padding:.05em .35em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+mark.pendente{background:var(--mark);color:var(--fg);padding:0 .25em;border-radius:3px;font-family:var(--ui);font-size:.85em}
+/* tabelas */
+.table{overflow-x:auto;margin:1.25rem 0 2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:.86rem;line-height:1.45}
+th{position:sticky;top:0;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--raised);padding:.7rem .85rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:.6rem .85rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--gold-ink);font-weight:600}
+tr:target td{background:var(--mark)}
+.perm{color:var(--crimson-ink);font-weight:600}
+/* regulamento: artigo com numero na margem */
+.reg-grid{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:start}
+.toc{position:sticky;top:1.5rem;font-family:var(--ui);font-size:.82rem;border-left:1px solid var(--line);padding-left:1rem;max-height:calc(100vh - 3rem);overflow-y:auto}
+.toc b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin:0;max-width:none}
+.toc a{display:block;padding:.22rem 0;color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--fg)}
+.toc .sub a{padding-left:.8rem;font-size:.78rem}
+.find{display:flex;gap:.5rem;align-items:center;margin:0 0 1.5rem;max-width:42rem}
+.find input{flex:1;min-width:0;font:inherit;font-family:var(--ui);font-size:.95rem;padding:.65rem .85rem;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.find input::placeholder{color:var(--muted)}
+.find output{font-family:var(--ui);font-size:.8rem;color:var(--muted);white-space:nowrap}
+.rune{font-family:"Noto Sans Runic","Segoe UI Historic","Segoe UI Symbol",serif;display:flex;align-items:center;gap:1rem;color:var(--gold);font-size:.95rem;letter-spacing:.6em;margin:3rem 0 0;opacity:.75}
+.rune::before,.rune::after{content:"";flex:1;height:1px;background:var(--line)}
+.art{display:grid;grid-template-columns:5.25rem minmax(0,1fr);gap:0 1.25rem;padding:1rem 0;border-top:1px solid var(--line-soft)}
+.art:target{background:linear-gradient(90deg,var(--mark),transparent 70%);border-radius:6px}
+.art-n{font-family:var(--display);font-weight:700;color:var(--gold-ink);font-size:1rem;letter-spacing:.03em;padding-top:.15rem;text-decoration:none;white-space:nowrap}
+.art-n:hover{color:var(--fg)}
+.art-body p:first-child{margin-top:0}
+.art-body > :last-child{margin-bottom:0}
+.art-body ul{list-style:none;padding-left:0}
+.art-body ul li{padding-left:0}
+.art-title{font-weight:600}
+.art-tools{display:flex;gap:1rem;margin-top:.5rem;font-family:var(--ui);font-size:.78rem}
+.art-tools a,.art-tools button{color:var(--muted);text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.art-tools a:hover,.art-tools button:hover{color:var(--gold-ink)}
+.hide{display:none}
+/* inicio */
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.75rem;align-items:center;margin:1rem 0 2.5rem}
+.hero img{width:clamp(88px,14vw,132px);height:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:1.25rem 0 2.5rem}
+.card{display:flex;flex-direction:column;gap:.4rem;padding:1.25rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);text-decoration:none;transition:border-color .2s}
+.card:hover{border-color:var(--gold)}
+.card b{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;color:var(--gold-ink)}
+.card span{font-size:.95rem;color:var(--muted);line-height:1.5}
+.card em{margin-top:auto;padding-top:.5rem;font-style:normal;font-family:var(--ui);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem 2rem;padding:0;margin:1rem 0;list-style:none;font-family:var(--ui);font-size:.92rem}
+.facts li{max-width:none;margin:0;border-top:1px solid var(--line);padding-top:.6rem}
+.facts small{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+footer.foot{margin-top:4rem;padding-top:1.25rem;border-top:1px solid var(--line);font-family:var(--ui);font-size:.78rem;color:var(--muted);max-width:46rem}
+@media (max-width:1180px){.reg-grid{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:1rem}
+  .side .brand{margin-bottom:0}
+  .side nav{display:none;margin-top:1rem}
+  .side.open nav{display:block}
+  .side small{display:none}
+  .side-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .menu{display:inline-flex}
+  .main{padding-block:1.5rem 3rem}
+  .art{grid-template-columns:minmax(0,1fr)}
+  .art-n{padding:0 0 .25rem}
+  .hero{grid-template-columns:minmax(0,1fr)}
+}
+.side-head{display:flex;justify-content:space-between;align-items:center}
+.menu{display:none;font-family:var(--ui);font-size:.85rem;background:var(--raised);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:.4rem .75rem;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side" id="side">
+  <div class="side-head">
+    <a class="brand" href="index.html"><img src="assets/emblema.png" alt=""><span><b>ASGARD</b><span>Wiki oficial</span></span></a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
+  </div>
+  <nav aria-label="Páginas da wiki"><div class="nav-group"><h2>Wiki</h2><ul><li><a href="index.html">Início</a></li></ul></div><div class="nav-group"><h2>Regras e políticas</h2><ul><li><a href="regulamento.html" aria-current="page">Regulamento Geral</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="reembolso.html">Política de Reembolso</a></li></ul></div><div class="nav-group"><h2>Links</h2><ul><li><a href="https://asgardnetwork.com.br">Loja e site</a></li><li><a href="https://asgardnetwork.com.br/discord">Discord oficial</a></li></ul></div></nav>
+  <small>Asgard Network · Survival Fimbul<br>Não afiliado à Mojang AB ou à Microsoft.</small>
+</aside>
+<main class="main">
+<div class="wrap wide">
+<p class="crumb">Regras e políticas</p>
+<h1>Regulamento Geral do Asgard</h1>
+<div class="meta"><span>Versão 1.0</span><span>Vigente desde 06/10/2026</span><span>51 artigos · 2 anexos</span></div>
+<div class="reg-grid"><div style="min-width:0">
+<div class="find"><label for="busca" class="hide">Buscar no regulamento</label><input id="busca" type="search" placeholder="Buscar artigo ou palavra (ex.: grief, 16, estorno)" autocomplete="off"><output id="busca-n" aria-live="polite"></output></div>
+<p class="lead">Este Regulamento estabelece as normas de conduta, as infrações e as penalidades aplicáveis a todos os usuários da Asgard Network no servidor Survival Fimbul, no Discord oficial e nos demais canais da rede. A decisão final em qualquer caso cabe à Staff.</p>
+<h2 id="titulo-1">TÍTULO I — DISPOSIÇÕES PRELIMINARES</h2>
+<article class="art" data-n="1" id="art-1"><a class="art-n" href="#art-1" title="Link deste artigo">Art. 1º</a><div class="art-body"><p><strong class="art-title">Objeto.</strong> Este Regulamento disciplina a conduta dos usuários da Asgard Network e se aplica:</p><ol>
+<li>ao servidor Survival Fimbul e a todos os seus mundos, incluindo Spawn, reinos, masmorras e Ginnungagap;</li>
+<li>ao Discord oficial da Asgard Network;</li>
+<li>ao site e à loja oficial, nos pontos que lhes dizem respeito.</li>
+</ol><div class="art-tools"><button class="copy" data-id="art-1" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="2" id="art-2"><a class="art-n" href="#art-2" title="Link deste artigo">Art. 2º</a><div class="art-body"><p><strong class="art-title">Aceitação.</strong> Ao acessar qualquer um dos ambientes do Art. 1º, o jogador declara conhecer e aceitar integralmente este Regulamento, os Termos de Uso e a Política de Reembolso.</p><div class="art-tools"><button class="copy" data-id="art-2" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="3" id="art-3"><a class="art-n" href="#art-3" title="Link deste artigo">Art. 3º</a><div class="art-body"><p><strong class="art-title">Definições.</strong> Para os fins deste Regulamento, considera-se:</p><ol>
+<li><strong>Jogador:</strong> toda pessoa que acessa o servidor ou o Discord, com qualquer conta;</li>
+<li><strong>Conta:</strong> o perfil de Minecraft usado para acessar o servidor, sob responsabilidade do seu titular;</li>
+<li><strong>Conta adicional:</strong> qualquer conta além da principal pertencente à mesma pessoa;</li>
+<li><strong>Staff:</strong> a equipe oficial do servidor (Ajudante, Moderador, Administrador e Dono), identificada pelo prefixo do cargo;</li>
+<li><strong>Cidade:</strong> a área protegida e registrada no sistema de cidades do servidor;</li>
+<li><strong>Área livre:</strong> todo território fora de cidades e fora do Spawn;</li>
+<li><strong>Vantagem indevida:</strong> qualquer benefício obtido por meio não previsto pelas mecânicas oficiais do servidor;</li>
+<li><strong>Má-fé:</strong> a intenção deliberada de enganar ou prejudicar outro jogador, inclusive se aproveitando da sua inocência ou inexperiência;</li>
+<li><strong>Ocorrência:</strong> cada infração punida, contada para fins de reincidência;</li>
+<li><strong>Prova:</strong> captura de tela, vídeo ou registro do sistema que demonstre o fato e o seu contexto.</li>
+</ol><div class="art-tools"><button class="copy" data-id="art-3" type="button">Copiar link</button></div></div></article>
+
+<div aria-hidden="true" class="rune">ᚠ ᚢ ᚦ</div><h2 id="titulo-2">TÍTULO II — DAS RESPONSABILIDADES DO JOGADOR</h2>
+<article class="art" data-n="4" id="art-4"><a class="art-n" href="#art-4" title="Link deste artigo">Art. 4º</a><div class="art-body"><p><strong class="art-title">Responsabilidade pela conta.</strong> O titular responde por todos os atos praticados com a sua conta, por quem quer que seja.</p><ul>
+<li><strong>Parágrafo único.</strong> Não afastam a penalidade alegações como empréstimo da conta, uso por familiar ou amigo, ou compartilhamento de senha.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-4" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="5" id="art-5"><a class="art-n" href="#art-5" title="Link deste artigo">Art. 5º</a><div class="art-body"><p><strong class="art-title">Conhecimento do Regulamento.</strong> O desconhecimento deste Regulamento não isenta o jogador de penalidade. O texto vigente fica disponível no comando <code>/regras</code>, nesta wiki e no Discord oficial.</p><div class="art-tools"><button class="copy" data-id="art-5" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="6" id="art-6"><a class="art-n" href="#art-6" title="Link deste artigo">Art. 6º</a><div class="art-body"><p><strong class="art-title">Contas adicionais.</strong> É permitido possuir e utilizar contas adicionais, desde que delas não resulte vantagem indevida clara para o jogador ou para terceiros.</p><ul>
+<li><strong>§ 1º</strong> Considera-se vantagem indevida, entre outras hipóteses, o uso de conta adicional para receber kits, recompensas da Jornada, conquistas, votos ou prêmios de disputas em benefício da conta principal, ou para auxiliá-la em combate.</li>
+<li><strong>§ 2º</strong> É vedado o uso de conta adicional para contornar penalidade em vigor, hipótese tratada no Art. 30.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-6" type="button">Copiar link</button></div></div></article>
+
+<div aria-hidden="true" class="rune">ᚨ ᚱ ᚲ</div><h2 id="titulo-3">TÍTULO III — DAS INFRAÇÕES</h2>
+<p>As condutas abaixo são vedadas. A penalidade de cada artigo consta do Anexo I.</p>
+<h3 id="cap-1">Capítulo I — Da comunicação</h3>
+<article class="art" data-n="7" id="art-7"><a class="art-n" href="#art-7" title="Link deste artigo">Art. 7º</a><div class="art-body"><p><strong class="art-title">Flood e spam.</strong> Enviar repetidamente mensagens, caracteres, símbolos ou comandos em sequência, inclusive <code>/tpa</code> e anúncios.</p><ul>
+<li><strong>Parágrafo único.</strong> Não configura flood a mensagem ocasional sem má intenção, como risadas e reações.</li>
+</ul><div class="art-tools"><a href="#pena-7">Ver penalidade</a><button class="copy" data-id="art-7" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="8" id="art-8"><a class="art-n" href="#art-8" title="Link deste artigo">Art. 8º</a><div class="art-body"><p><strong class="art-title">Ofensa a jogador.</strong> Ofender, xingar, humilhar ou dirigir palavrões a outro jogador.</p><div class="art-tools"><a href="#pena-8">Ver penalidade</a><button class="copy" data-id="art-8" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="9" id="art-9"><a class="art-n" href="#art-9" title="Link deste artigo">Art. 9º</a><div class="art-body"><p><strong class="art-title">Provocação.</strong> Iniciar ou alimentar discussões no chat público, ou manter deboche reiterado contra jogador.</p><div class="art-tools"><a href="#pena-9">Ver penalidade</a><button class="copy" data-id="art-9" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="10" id="art-10"><a class="art-n" href="#art-10" title="Link deste artigo">Art. 10</a><div class="art-body"><p><strong class="art-title">Desrespeito à Staff ou ao servidor.</strong> Ofender a Staff ou o servidor, ou discutir penalidades no chat público.</p><ul>
+<li><strong>Parágrafo único.</strong> Críticas e sugestões são bem-vindas pelos canais próprios do Discord.</li>
+</ul><div class="art-tools"><a href="#pena-10">Ver penalidade</a><button class="copy" data-id="art-10" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="11" id="art-11"><a class="art-n" href="#art-11" title="Link deste artigo">Art. 11</a><div class="art-body"><p><strong class="art-title">Temas polêmicos.</strong> Promover discussões políticas ou religiosas no chat global.</p><div class="art-tools"><a href="#pena-11">Ver penalidade</a><button class="copy" data-id="art-11" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="12" id="art-12"><a class="art-n" href="#art-12" title="Link deste artigo">Art. 12</a><div class="art-body"><p><strong class="art-title">Conteúdo impróprio.</strong> Divulgar conteúdo sexual, violência explícita ou apologia a crime.</p><div class="art-tools"><a href="#pena-12">Ver penalidade</a><button class="copy" data-id="art-12" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="13" id="art-13"><a class="art-n" href="#art-13" title="Link deste artigo">Art. 13</a><div class="art-body"><p><strong class="art-title">Links.</strong> Enviar links que não pertençam aos canais oficiais da Asgard Network.</p><ul>
+<li><strong>Parágrafo único.</strong> O envio de link malicioso é regido pelo Art. 33.</li>
+</ul><div class="art-tools"><a href="#pena-13">Ver penalidade</a><button class="copy" data-id="art-13" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="14" id="art-14"><a class="art-n" href="#art-14" title="Link deste artigo">Art. 14</a><div class="art-body"><p><strong class="art-title">Menção a outros servidores.</strong> Convidar ou incentivar jogadores a jogar em outro servidor, ainda que sem informar endereço.</p><ul>
+<li><strong>Parágrafo único.</strong> A divulgação com IP, link ou convite é regida pelo Art. 32.</li>
+</ul><div class="art-tools"><a href="#pena-14">Ver penalidade</a><button class="copy" data-id="art-14" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="15" id="art-15"><a class="art-n" href="#art-15" title="Link deste artigo">Art. 15</a><div class="art-body"><p><strong class="art-title">Desinformação.</strong> Divulgar intencionalmente informação falsa sobre atualizações, eventos, regras ou membros da Staff.</p><div class="art-tools"><a href="#pena-15">Ver penalidade</a><button class="copy" data-id="art-15" type="button">Copiar link</button></div></div></article>
+<h3 id="cap-2">Capítulo II — Da integridade do jogo</h3>
+<article class="art" data-n="16" id="art-16"><a class="art-n" href="#art-16" title="Link deste artigo">Art. 16</a><div class="art-body"><p><strong class="art-title">Trapaça.</strong> Utilizar cliente, programa ou recurso que conceda vantagem indevida, como kill aura, voo, alcance ampliado, x-ray, auto-clicker ou macro.</p><ul>
+<li><strong>Parágrafo único.</strong> A penalidade é o banimento permanente. Mediante análise do caso concreto, a Staff pode aplicar penalidade mais branda.</li>
+</ul><div class="art-tools"><a href="#pena-16">Ver penalidade</a><button class="copy" data-id="art-16" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="17" id="art-17"><a class="art-n" href="#art-17" title="Link deste artigo">Art. 17</a><div class="art-body"><p><strong class="art-title">Modificação não autorizada.</strong> Utilizar modificação que exiba informação não disponível no jogo comum ou que conceda vantagem, ainda que não caracterize trapaça, nos termos do Anexo II.</p><div class="art-tools"><a href="#pena-17">Ver penalidade</a><button class="copy" data-id="art-17" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="18" id="art-18"><a class="art-n" href="#art-18" title="Link deste artigo">Art. 18</a><div class="art-body"><p><strong class="art-title">Exploração de falhas.</strong> Explorar intencionalmente falha do servidor ou do jogo para obter vantagem, em vez de reportá-la nos termos do Art. 47.</p><div class="art-tools"><a href="#pena-18">Ver penalidade</a><button class="copy" data-id="art-18" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="19" id="art-19"><a class="art-n" href="#art-19" title="Link deste artigo">Art. 19</a><div class="art-body"><p><strong class="art-title">Duplicação.</strong> Duplicar itens, moedas ou Tributos por qualquer meio.</p><ul>
+<li><strong>Parágrafo único.</strong> Além da penalidade, serão removidos todos os bens obtidos com a duplicação ou com o seu uso.</li>
+</ul><div class="art-tools"><a href="#pena-19">Ver penalidade</a><button class="copy" data-id="art-19" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="20" id="art-20"><a class="art-n" href="#art-20" title="Link deste artigo">Art. 20</a><div class="art-body"><p><strong class="art-title">Sobrecarga do servidor.</strong> Construir ou manter mecanismo, farm ou construção que comprometa o desempenho do servidor.</p><ul>
+<li><strong>§ 1º</strong> A Staff pode remover a construção independentemente de aviso prévio.</li>
+<li><strong>§ 2º</strong> Comprovada a intenção de travar o servidor, aplica-se diretamente o banimento permanente.</li>
+</ul><div class="art-tools"><a href="#pena-20">Ver penalidade</a><button class="copy" data-id="art-20" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="21" id="art-21"><a class="art-n" href="#art-21" title="Link deste artigo">Art. 21</a><div class="art-body"><p><strong class="art-title">Burla à inatividade.</strong> Utilizar programa, macro ou artifício para simular atividade, inclusive em disputas de tempo online.</p><ul>
+<li><strong>Parágrafo único.</strong> Além da penalidade, o jogador é desclassificado da disputa em curso.</li>
+</ul><div class="art-tools"><a href="#pena-21">Ver penalidade</a><button class="copy" data-id="art-21" type="button">Copiar link</button></div></div></article>
+
+<h3 id="cap-3">Capítulo III — Da conduta entre jogadores</h3>
+<article class="art" data-n="22" id="art-22"><a class="art-n" href="#art-22" title="Link deste artigo">Art. 22</a><div class="art-body"><p><strong class="art-title">Discriminação.</strong> Praticar ou incitar discriminação por raça, cor, etnia, origem, religião, gênero, orientação sexual, deficiência ou condição social.</p><ul>
+<li><strong>Parágrafo único.</strong> Nos casos graves, aplica-se diretamente o banimento permanente.</li>
+</ul><div class="art-tools"><a href="#pena-22">Ver penalidade</a><button class="copy" data-id="art-22" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="23" id="art-23"><a class="art-n" href="#art-23" title="Link deste artigo">Art. 23</a><div class="art-body"><p><strong class="art-title">Armadilha e fraude.</strong> Atrair jogador para armadilha, inclusive por <code>/tpa</code>, base ou warp; enganá-lo em negociação; ou se aproveitar da sua inocência ou inexperiência para obter vantagem.</p><div class="art-tools"><a href="#pena-23">Ver penalidade</a><button class="copy" data-id="art-23" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="24" id="art-24"><a class="art-n" href="#art-24" title="Link deste artigo">Art. 24</a><div class="art-body"><p><strong class="art-title">Anti-jogo.</strong> Atrapalhar deliberadamente eventos, disputas ou masmorras de outros jogadores; bloquear portais, NPCs ou passagens; ou perseguir reiteradamente outro jogador.</p><div class="art-tools"><a href="#pena-24">Ver penalidade</a><button class="copy" data-id="art-24" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="25" id="art-25"><a class="art-n" href="#art-25" title="Link deste artigo">Art. 25</a><div class="art-body"><p><strong class="art-title">Manipulação de abates.</strong> Matar conta adicional ou combinar mortes com outros jogadores para inflar estatísticas, vencer disputas ou obter recompensas.</p><ul>
+<li><strong>Parágrafo único.</strong> Além da penalidade, as estatísticas do infrator são zeradas.</li>
+</ul><div class="art-tools"><a href="#pena-25">Ver penalidade</a><button class="copy" data-id="art-25" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="26" id="art-26"><a class="art-n" href="#art-26" title="Link deste artigo">Art. 26</a><div class="art-body"><p><strong class="art-title">Identidade e conteúdo impróprio.</strong> Utilizar nick, skin, tag, nome de cidade ou de clã, ou construir estrutura, com conteúdo ofensivo, sexual ou de ódio.</p><ul>
+<li><strong>Parágrafo único.</strong> Independentemente da penalidade, a Staff pode exigir a alteração, renomear ou remover o conteúdo.</li>
+</ul><div class="art-tools"><a href="#pena-26">Ver penalidade</a><button class="copy" data-id="art-26" type="button">Copiar link</button></div></div></article>
+
+<h3 id="cap-4">Capítulo IV — Do território</h3>
+<article class="art" data-n="27" id="art-27"><a class="art-n" href="#art-27" title="Link deste artigo">Art. 27</a><div class="art-body"><p><strong class="art-title">Áreas livres.</strong> Na área livre, a destruição de construções (grief) é permitida e integra a dinâmica do jogo.</p><ul>
+<li><strong>§ 1º</strong> A subtração de itens de outro jogador na área livre somente constitui infração quando houver má-fé evidente, nos termos do Art. 23.</li>
+<li><strong>§ 2º</strong> A proteção de construções e bens é responsabilidade do jogador, que pode fazê-la por meio das cidades.</li>
+</ul><div class="art-tools"><a href="#pena-27">Ver penalidade</a><button class="copy" data-id="art-27" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="28" id="art-28"><a class="art-n" href="#art-28" title="Link deste artigo">Art. 28</a><div class="art-body"><p><strong class="art-title">Cidades.</strong> Dentro de cidade, é vedada qualquer forma de furto, roubo ou destruição de bens de outro jogador, inclusive de spawners, ainda que o infrator tenha recebido acesso ou tenha sido convidado pelo morador.</p><ul>
+<li><strong>§ 1º</strong> A penalidade é graduada conforme a extensão do dano, podendo ser aplicada diretamente a pena máxima.</li>
+<li><strong>§ 2º</strong> Sempre que possível, a Staff determinará a devolução dos bens e o reparo do dano.</li>
+<li><strong>§ 3º</strong> Nas hipóteses deste Capítulo, a apuração depende da apresentação de provas, nos termos do Art. 45.</li>
+</ul><div class="art-tools"><a href="#pena-28">Ver penalidade</a><button class="copy" data-id="art-28" type="button">Copiar link</button></div></div></article>
+
+<h3 id="cap-5">Capítulo V — Da segurança e da integridade da comunidade</h3>
+<article class="art" data-n="29" id="art-29"><a class="art-n" href="#art-29" title="Link deste artigo">Art. 29</a><div class="art-body"><p><strong class="art-title">Falsa identidade de Staff.</strong> Fazer-se passar por membro da Staff, inclusive por nick semelhante, declaração falsa de cargo ou ameaça de aplicar penalidade.</p><div class="art-tools"><a href="#pena-29">Ver penalidade</a><button class="copy" data-id="art-29" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="30" id="art-30"><a class="art-n" href="#art-30" title="Link deste artigo">Art. 30</a><div class="art-body"><p><strong class="art-title">Evasão de penalidade.</strong> Acessar o servidor com outra conta durante silenciamento ou banimento em vigor.</p><ul>
+<li><strong>Parágrafo único.</strong> A conta usada na evasão é banida permanentemente, e a penalidade original da conta principal é aplicada em dobro.</li>
+</ul><div class="art-tools"><a href="#pena-30">Ver penalidade</a><button class="copy" data-id="art-30" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="31" id="art-31"><a class="art-n" href="#art-31" title="Link deste artigo">Art. 31</a><div class="art-body"><p><strong class="art-title">Conivência com trapaça.</strong> Jogar em conjunto com quem usa trapaça, receber bens obtidos por ela, ou ensinar ou incentivar o seu uso.</p><div class="art-tools"><a href="#pena-31">Ver penalidade</a><button class="copy" data-id="art-31" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="32" id="art-32"><a class="art-n" href="#art-32" title="Link deste artigo">Art. 32</a><div class="art-body"><p><strong class="art-title">Divulgação.</strong> Divulgar IP, link ou convite de outro servidor, em qualquer canal da Asgard Network.</p><div class="art-tools"><a href="#pena-32">Ver penalidade</a><button class="copy" data-id="art-32" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="33" id="art-33"><a class="art-n" href="#art-33" title="Link deste artigo">Art. 33</a><div class="art-body"><p><strong class="art-title">Ameaças, dados pessoais e links maliciosos.</strong> Ameaçar ataque ao servidor ou a jogadores, inclusive em tom de brincadeira; expor IP, dados ou imagens de terceiros sem autorização; ou enviar link de vírus, golpe ou captura de dados.</p><div class="art-tools"><a href="#pena-33">Ver penalidade</a><button class="copy" data-id="art-33" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="34" id="art-34"><a class="art-n" href="#art-34" title="Link deste artigo">Art. 34</a><div class="art-body"><p><strong class="art-title">Falsificação de prova e denúncia de má-fé.</strong> Criar ou adulterar captura de tela, vídeo ou relato, ou apresentar denúncia sabidamente falsa.</p><div class="art-tools"><a href="#pena-34">Ver penalidade</a><button class="copy" data-id="art-34" type="button">Copiar link</button></div></div></article>
+<h3 id="cap-6">Capítulo VI — Do comércio, da loja e das contas</h3>
+<article class="art" data-n="35" id="art-35"><a class="art-n" href="#art-35" title="Link deste artigo">Art. 35</a><div class="art-body"><p><strong class="art-title">Comércio com valores externos.</strong> Negociar itens, moedas, Tributos, contas, cargos ou qualquer bem do servidor em troca de dinheiro, cartões-presente, créditos, criptoativos ou bens de outros jogos ou plataformas.</p><ul>
+<li><strong>Parágrafo único.</strong> São punidos o vendedor e o comprador, na forma do Anexo I.</li>
+</ul><div class="art-tools"><a href="#pena-35">Ver penalidade</a><button class="copy" data-id="art-35" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="36" id="art-36"><a class="art-n" href="#art-36" title="Link deste artigo">Art. 36</a><div class="art-body"><p><strong class="art-title">Estorno.</strong> Solicitar estorno, contestação ou cancelamento de pagamento feito na loja oficial após o recebimento do produto, sem prévia tentativa de solução pelo suporte.</p><ul>
+<li><strong>Parágrafo único.</strong> Além da penalidade, o produto adquirido é removido da conta.</li>
+</ul><div class="art-tools"><a href="#pena-36">Ver penalidade</a><button class="copy" data-id="art-36" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="37" id="art-37"><a class="art-n" href="#art-37" title="Link deste artigo">Art. 37</a><div class="art-body"><p><strong class="art-title">Uso indevido de conta adicional.</strong> Obter vantagem indevida por meio de conta adicional, nas hipóteses do Art. 6º, § 1º.</p><div class="art-tools"><a href="#pena-37">Ver penalidade</a><button class="copy" data-id="art-37" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="38" id="art-38"><a class="art-n" href="#art-38" title="Link deste artigo">Art. 38</a><div class="art-body"><p><strong class="art-title">Negociações entre jogadores.</strong> As negociações entre jogadores devem ser feitas preferencialmente pelos sistemas oficiais <code>/trato</code> e <code>/ah</code>, que garantem a entrega.</p><ul>
+<li><strong>§ 1º</strong> Negociações feitas fora desses sistemas correm por conta e risco dos envolvidos.</li>
+<li><strong>§ 2º</strong> A Staff atuará somente mediante prova de fraude, nos termos do Art. 23.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-38" type="button">Copiar link</button></div></div></article>
+
+<h3 id="cap-7">Capítulo VII — Das modificações e programas</h3>
+<article class="art" data-n="39" id="art-39"><a class="art-n" href="#art-39" title="Link deste artigo">Art. 39</a><div class="art-body"><p><strong class="art-title">Modificações.</strong> É permitido o uso de modificações que alterem apenas o desempenho ou a aparência do jogo, e de minimapa restrito a mapa e waypoints, conforme o Anexo II.</p><ul>
+<li><strong>§ 1º</strong> É vedado o uso de modificação, programa ou recurso de periférico que automatize ações, exiba informação indisponível no jogo comum ou conceda vantagem.</li>
+<li><strong>§ 2º</strong> A existência de uma função no cliente, na modificação ou no software do mouse ou teclado não autoriza o seu uso.</li>
+<li><strong>§ 3º</strong> Em caso de dúvida, o jogador deve consultar a Staff antes de utilizar a modificação.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-39" type="button">Copiar link</button></div></div></article>
+
+<h3 id="cap-8">Capítulo VIII — Do Discord</h3>
+<article class="art" data-n="40" id="art-40"><a class="art-n" href="#art-40" title="Link deste artigo">Art. 40</a><div class="art-body"><p><strong class="art-title">Discord oficial.</strong> Aplicam-se ao Discord oficial as normas deste Regulamento e as Diretrizes da Comunidade do Discord.</p><ul>
+<li><strong>§ 1º</strong> Cada canal deve ser usado para a sua finalidade, e a divulgação é vedada fora do canal destinado a ela.</li>
+<li><strong>§ 2º</strong> Denúncias, pedidos de suporte e recursos devem ser feitos exclusivamente por ticket.</li>
+<li><strong>§ 3º</strong> É vedado mencionar a Staff em massa ou cobrar resposta por mensagem privada.</li>
+<li><strong>§ 4º</strong> No Discord, as penalidades são o silenciamento temporário (timeout) e a expulsão; nos casos graves, a penalidade pode ser estendida ao servidor.</li>
+</ul><div class="art-tools"><a href="#pena-40">Ver penalidade</a><button class="copy" data-id="art-40" type="button">Copiar link</button></div></div></article>
+
+<div aria-hidden="true" class="rune">ᚷ ᚹ ᚺ</div><h2 id="titulo-4">TÍTULO IV — DAS PENALIDADES E DO PROCEDIMENTO</h2>
+<article class="art" data-n="41" id="art-41"><a class="art-n" href="#art-41" title="Link deste artigo">Art. 41</a><div class="art-body"><p><strong class="art-title">Espécies de penalidade.</strong> São penalidades aplicáveis:</p><ol>
+<li>advertência;</li>
+<li>silenciamento temporário (mute);</li>
+<li>banimento temporário;</li>
+<li>banimento permanente.</li>
+</ol><ul>
+<li><strong>Parágrafo único.</strong> As penalidades podem ser acompanhadas das medidas acessórias do Art. 44.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-41" type="button">Copiar link</button></div></div></article>
+
+
+<article class="art" data-n="42" id="art-42"><a class="art-n" href="#art-42" title="Link deste artigo">Art. 42</a><div class="art-body"><p><strong class="art-title">Gradação e reincidência.</strong> A penalidade é aplicada conforme o número de ocorrências da mesma infração, na forma do Anexo I.</p><ul>
+<li><strong>§ 1º</strong> A contagem de ocorrências é extinta após 90 (noventa) dias sem nova penalidade.</li>
+<li><strong>§ 2º</strong> Ultrapassada a última ocorrência prevista no Anexo I, aplica-se a pena máxima ali indicada.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-42" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="43" id="art-43"><a class="art-n" href="#art-43" title="Link deste artigo">Art. 43</a><div class="art-body"><p><strong class="art-title">Agravantes e atenuantes.</strong> A Staff pode, fundamentadamente:</p><ol>
+<li>aplicar diretamente pena mais grave, em caso de gravidade da conduta, dano expressivo, reiteração de infrações diversas ou má-fé evidente;</li>
+<li>aplicar pena mais branda, em caso de confissão espontânea, colaboração com a apuração ou reparação voluntária do dano.</li>
+</ol><div class="art-tools"><button class="copy" data-id="art-43" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="44" id="art-44"><a class="art-n" href="#art-44" title="Link deste artigo">Art. 44</a><div class="art-body"><p><strong class="art-title">Medidas acessórias.</strong> Independentemente da penalidade, a Staff pode determinar:</p><ol>
+<li>a remoção de bens obtidos indevidamente;</li>
+<li>a devolução de bens e o reparo do dano causado;</li>
+<li>o zeramento de estatísticas;</li>
+<li>a desclassificação de disputas e eventos;</li>
+<li>a alteração ou remoção de nome, tag, skin ou construção;</li>
+<li>a remoção de construções que comprometam o desempenho do servidor.</li>
+</ol><div class="art-tools"><button class="copy" data-id="art-44" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="45" id="art-45"><a class="art-n" href="#art-45" title="Link deste artigo">Art. 45</a><div class="art-body"><p><strong class="art-title">Denúncia e provas.</strong> A denúncia deve ser feita por ticket no Discord oficial, acompanhada de prova e do contexto do fato.</p><ul>
+<li><strong>§ 1º</strong> A denúncia sem prova suficiente não será processada.</li>
+<li><strong>§ 2º</strong> Os registros do sistema, como histórico de blocos, anticheat e registros de chat, podem fundamentar penalidade aplicada de ofício.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-45" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="46" id="art-46"><a class="art-n" href="#art-46" title="Link deste artigo">Art. 46</a><div class="art-body"><p><strong class="art-title">Recurso.</strong> O jogador pode recorrer da penalidade por ticket, no prazo de 7 (sete) dias corridos contados da sua aplicação.</p><ul>
+<li><strong>§ 1º</strong> O recurso é analisado por membro da Staff diverso daquele que aplicou a penalidade.</li>
+<li><strong>§ 2º</strong> O recurso não suspende a penalidade.</li>
+<li><strong>§ 3º</strong> A decisão do recurso é definitiva, ressalvada a revisão excepcional pelo Administrador ou pelo Dono.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-46" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="47" id="art-47"><a class="art-n" href="#art-47" title="Link deste artigo">Art. 47</a><div class="art-body"><p><strong class="art-title">Reporte de falhas.</strong> O jogador que encontrar falha no servidor deve reportá-la por ticket, sem explorá-la.</p><ul>
+<li><strong>§ 1º</strong> O jogador não será punido por ter encontrado e reportado a falha.</li>
+<li><strong>§ 2º</strong> O reporte pode ser recompensado, a critério da Staff, conforme a gravidade e o alcance da falha.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-47" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="48" id="art-48"><a class="art-n" href="#art-48" title="Link deste artigo">Art. 48</a><div class="art-body"><p><strong class="art-title">Efeitos sobre compras.</strong> A aplicação de penalidade não gera direito a reembolso, prorrogação ou compensação de produtos adquiridos na loja oficial, nos termos da Política de Reembolso.</p><div class="art-tools"><button class="copy" data-id="art-48" type="button">Copiar link</button></div></div></article>
+<div aria-hidden="true" class="rune">ᚾ ᛁ ᛃ</div><h2 id="titulo-5">TÍTULO V — DISPOSIÇÕES FINAIS</h2>
+<article class="art" data-n="49" id="art-49"><a class="art-n" href="#art-49" title="Link deste artigo">Art. 49</a><div class="art-body"><p><strong class="art-title">Casos omissos e autoridade da Staff.</strong> Os casos omissos são resolvidos pela Staff, que pode punir condutas de má-fé ainda que não expressamente previstas neste Regulamento.</p><ul>
+<li><strong>Parágrafo único.</strong> A decisão da Staff é a última palavra em qualquer caso.</li>
+</ul><div class="art-tools"><button class="copy" data-id="art-49" type="button">Copiar link</button></div></div></article>
+
+<article class="art" data-n="50" id="art-50"><a class="art-n" href="#art-50" title="Link deste artigo">Art. 50</a><div class="art-body"><p><strong class="art-title">Alterações.</strong> Este Regulamento pode ser alterado a qualquer tempo. As alterações são publicadas no Discord oficial e passam a valer na data da publicação.</p><div class="art-tools"><button class="copy" data-id="art-50" type="button">Copiar link</button></div></div></article>
+<article class="art" data-n="51" id="art-51"><a class="art-n" href="#art-51" title="Link deste artigo">Art. 51</a><div class="art-body"><p><strong class="art-title">Vigência.</strong> Este Regulamento entra em vigor na data da sua publicação e revoga as normas anteriores.</p><div class="art-tools"><button class="copy" data-id="art-51" type="button">Copiar link</button></div></div></article>
+<div aria-hidden="true" class="rune">ᛇ ᛈ ᛊ</div><h2 id="anexo-1">ANEXO I — TABELA DE PENALIDADES</h2>
+<p>Penalidade por ocorrência da mesma infração, observados os Arts. 42 a 44. "Permanente" indica banimento permanente.</p>
+<div class="table"><table>
+<thead>
+<tr>
+<th>Art.</th>
+<th>Infração</th>
+<th>1ª ocorrência</th>
+<th>2ª ocorrência</th>
+<th>3ª ocorrência</th>
+</tr>
+</thead>
+<tbody>
+<tr id="pena-7">
+<td><a href="#art-7">7º</a></td>
+<td>Flood e spam</td>
+<td>Mute 15 min</td>
+<td>Mute 1 h</td>
+<td>Mute 6 h</td>
+</tr>
+<tr id="pena-8">
+<td><a href="#art-8">8º</a></td>
+<td>Ofensa a jogador</td>
+<td>Mute 1 h</td>
+<td>Mute 6 h</td>
+<td>Mute 1 dia</td>
+</tr>
+<tr id="pena-9">
+<td><a href="#art-9">9º</a></td>
+<td>Provocação</td>
+<td>Mute 30 min</td>
+<td>Mute 2 h</td>
+<td>Mute 12 h</td>
+</tr>
+<tr id="pena-10">
+<td><a href="#art-10">10</a></td>
+<td>Desrespeito à Staff ou ao servidor</td>
+<td>Mute 6 h</td>
+<td>Mute 1 dia</td>
+<td>Ban 3 dias</td>
+</tr>
+<tr id="pena-11">
+<td><a href="#art-11">11</a></td>
+<td>Temas polêmicos</td>
+<td>Advertência</td>
+<td>Mute 1 h</td>
+<td>Mute 6 h</td>
+</tr>
+<tr id="pena-12">
+<td><a href="#art-12">12</a></td>
+<td>Conteúdo impróprio</td>
+<td>Mute 1 dia</td>
+<td>Ban 3 dias</td>
+<td>Ban 15 dias</td>
+</tr>
+<tr id="pena-13">
+<td><a href="#art-13">13</a></td>
+<td>Links</td>
+<td>Mute 30 min</td>
+<td>Mute 2 h</td>
+<td>Mute 12 h</td>
+</tr>
+<tr id="pena-14">
+<td><a href="#art-14">14</a></td>
+<td>Menção a outros servidores</td>
+<td>Mute 1 h</td>
+<td>Mute 6 h</td>
+<td>Mute 1 dia</td>
+</tr>
+<tr id="pena-15">
+<td><a href="#art-15">15</a></td>
+<td>Desinformação</td>
+<td>Mute 2 h</td>
+<td>Mute 6 h</td>
+<td>Mute 1 dia</td>
+</tr>
+<tr id="pena-16">
+<td><a href="#art-16">16</a></td>
+<td>Trapaça</td>
+<td class="perm">Permanente (Art. 16, parágrafo único)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr id="pena-17">
+<td><a href="#art-17">17</a></td>
+<td>Modificação não autorizada</td>
+<td>Ban 7 dias</td>
+<td>Ban 30 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-18">
+<td><a href="#art-18">18</a></td>
+<td>Exploração de falhas</td>
+<td>Ban 3 dias</td>
+<td>Ban 15 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-19">
+<td><a href="#art-19">19</a></td>
+<td>Duplicação</td>
+<td>Ban 30 dias + remoção dos bens</td>
+<td class="perm">Permanente</td>
+<td>—</td>
+</tr>
+<tr id="pena-20">
+<td><a href="#art-20">20</a></td>
+<td>Sobrecarga do servidor</td>
+<td>Advertência + remoção</td>
+<td>Ban 3 dias</td>
+<td>Ban 15 dias</td>
+</tr>
+<tr id="pena-21">
+<td><a href="#art-21">21</a></td>
+<td>Burla à inatividade</td>
+<td>Ban 1 dia + desclassificação</td>
+<td>Ban 3 dias</td>
+<td>Ban 7 dias</td>
+</tr>
+<tr id="pena-22">
+<td><a href="#art-22">22</a></td>
+<td>Discriminação</td>
+<td>Ban 15 dias</td>
+<td class="perm">Permanente</td>
+<td>—</td>
+</tr>
+<tr id="pena-23">
+<td><a href="#art-23">23</a></td>
+<td>Armadilha e fraude</td>
+<td>Ban 3 dias</td>
+<td>Ban 7 dias</td>
+<td>Ban 30 dias</td>
+</tr>
+<tr id="pena-24">
+<td><a href="#art-24">24</a></td>
+<td>Anti-jogo</td>
+<td>Advertência</td>
+<td>Ban 1 dia</td>
+<td>Ban 3 dias</td>
+</tr>
+<tr id="pena-25">
+<td><a href="#art-25">25</a></td>
+<td>Manipulação de abates</td>
+<td>Ban 3 dias + zeramento</td>
+<td>Ban 7 dias</td>
+<td>Ban 30 dias</td>
+</tr>
+<tr id="pena-26">
+<td><a href="#art-26">26</a></td>
+<td>Identidade e conteúdo impróprio</td>
+<td>Advertência + alteração</td>
+<td>Ban 3 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-27">
+<td><a href="#art-27">27</a></td>
+<td>Subtração com má-fé em área livre</td>
+<td>Conforme Art. 23</td>
+<td>Conforme Art. 23</td>
+<td>Conforme Art. 23</td>
+</tr>
+<tr id="pena-28">
+<td><a href="#art-28">28</a></td>
+<td>Furto, roubo ou destruição em cidade</td>
+<td>Ban 7 dias + devolução e reparo</td>
+<td>Ban 30 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-29">
+<td><a href="#art-29">29</a></td>
+<td>Falsa identidade de Staff</td>
+<td>Ban 7 dias</td>
+<td>Ban 30 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-30">
+<td><a href="#art-30">30</a></td>
+<td>Evasão de penalidade</td>
+<td class="perm">Permanente na conta usada + pena original em dobro</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr id="pena-31">
+<td><a href="#art-31">31</a></td>
+<td>Conivência com trapaça</td>
+<td>Ban 7 dias</td>
+<td>Ban 30 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-32">
+<td><a href="#art-32">32</a></td>
+<td>Divulgação</td>
+<td>Ban 30 dias</td>
+<td class="perm">Permanente</td>
+<td>—</td>
+</tr>
+<tr id="pena-33">
+<td><a href="#art-33">33</a></td>
+<td>Ameaças, dados pessoais e links maliciosos</td>
+<td class="perm">Permanente</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr id="pena-34">
+<td><a href="#art-34">34</a></td>
+<td>Falsificação de prova e denúncia de má-fé</td>
+<td>Ban 3 dias</td>
+<td>Ban 15 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-35">
+<td><a href="#art-35">35</a></td>
+<td>Comércio com valores externos</td>
+<td>Vendedor: permanente · Comprador: ban 30 dias</td>
+<td class="perm">Permanente</td>
+<td>—</td>
+</tr>
+<tr id="pena-36">
+<td><a href="#art-36">36</a></td>
+<td>Estorno</td>
+<td class="perm">Permanente + remoção do produto</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr id="pena-37">
+<td><a href="#art-37">37</a></td>
+<td>Uso indevido de conta adicional</td>
+<td>Ban 3 dias + remoção do ganho</td>
+<td>Ban 15 dias</td>
+<td class="perm">Permanente</td>
+</tr>
+<tr id="pena-40">
+<td><a href="#art-40">40</a></td>
+<td>Infração no Discord</td>
+<td>Timeout</td>
+<td>Expulsão do Discord</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-hidden="true" class="rune">ᛏ ᛒ ᛖ</div><h2 id="anexo-2">ANEXO II — MODIFICAÇÕES E PROGRAMAS</h2>
+<p>Relação exemplificativa, nos termos do Art. 39. Recurso não listado segue o critério do Art. 39, § 1º.</p>
+<div class="table"><table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Permitido</th>
+<th>Vedado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desempenho e aparência</td>
+<td>OptiFine, Sodium, Iris (shaders), Lithium, pacotes de textura apenas visuais</td>
+<td>Textura ou modificação de x-ray; iluminação total para localizar minérios</td>
+</tr>
+<tr>
+<td>Clientes</td>
+<td>Vanilla, Fabric, Forge, Lunar, Badlion, Feather, LabyMod</td>
+<td>Clientes de trapaça, como Meteor, Wurst e similares</td>
+</tr>
+<tr>
+<td>Minimapa</td>
+<td>Xaero's, JourneyMap e VoxelMap, restritos a mapa e waypoints</td>
+<td>Radar de jogadores ou criaturas, modo caverna, localização de spawners ou baús</td>
+</tr>
+<tr>
+<td>Construção</td>
+<td>Litematica, apenas para visualização de projetos</td>
+<td>Printer do Litematica e qualquer colocação automática de blocos</td>
+</tr>
+<tr>
+<td>Teclado e mouse</td>
+<td>Tecla que executa um comando por acionamento</td>
+<td>Auto-clicker, macro, AutoHotkey, TinyTask, repetição automática de comandos</td>
+</tr>
+<tr>
+<td>Automação</td>
+<td>—</td>
+<td>Baritone, bots de mineração ou pesca, Freecam</td>
+</tr>
+</tbody>
+</table></div>
+</div><nav class="toc" aria-label="Sumário"><b>Sumário</b><ul><li><a href="#titulo-1">Título I · Disposições preliminares</a></li><li><a href="#titulo-2">Título II · Das responsabilidades do jogador</a></li><li><a href="#titulo-3">Título III · Das infrações</a></li><li class="sub"><a href="#cap-1">Da comunicação</a></li><li class="sub"><a href="#cap-2">Da integridade do jogo</a></li><li class="sub"><a href="#cap-3">Da conduta entre jogadores</a></li><li class="sub"><a href="#cap-4">Do território</a></li><li class="sub"><a href="#cap-5">Da segurança e da integridade da comunidade</a></li><li class="sub"><a href="#cap-6">Do comércio, da loja e das contas</a></li><li class="sub"><a href="#cap-7">Das modificações e programas</a></li><li class="sub"><a href="#cap-8">Do Discord</a></li><li><a href="#titulo-4">Título IV · Das penalidades e do procedimento</a></li><li><a href="#titulo-5">Título V · Disposições finais</a></li><li><a href="#anexo-1">Anexo I · Tabela de penalidades</a></li><li><a href="#anexo-2">Anexo II · Modificações e programas</a></li></ul></nav></div>
+<footer class="foot">Asgard Network · Wiki oficial · Atualizado em 06/10/2026. Dúvidas: abra um ticket no <a href="https://asgardnetwork.com.br/discord">Discord oficial</a>.</footer>
+</div>
+</main>
+</div>
+<script>
+(function(){var b=document.getElementById('menu'),s=document.getElementById('side');if(!b)return;b.addEventListener('click',function(){var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+
+(function(){
+  var q=document.getElementById('busca'),out=document.getElementById('busca-n');
+  var arts=[].slice.call(document.querySelectorAll('.art')),rows=[].slice.call(document.querySelectorAll('tr[id^="pena-"]'));
+  var norm=function(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');};
+  arts.forEach(function(a){a._t=norm(a.textContent);});rows.forEach(function(r){r._t=norm(r.textContent);});
+  q.addEventListener('input',function(){
+    var v=norm(q.value.trim()),n=0;
+    arts.forEach(function(a){var ok=!v||a._t.indexOf(v)>-1||a.dataset.n===v.replace(/\D/g,'');a.classList.toggle('hide',!ok);if(ok&&v)n++;});
+    rows.forEach(function(r){var ok=!v||r._t.indexOf(v)>-1||r.id==='pena-'+v.replace(/\D/g,'');r.classList.toggle('hide',!ok);});
+    out.textContent=v?(n+(n===1?' artigo':' artigos')):'';
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.copy');if(!b)return;
+    var url=location.href.split('#')[0]+'#'+b.dataset.id;
+    var done=function(){b.textContent='Link copiado';setTimeout(function(){b.textContent='Copiar link';},1600);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){location.hash=b.dataset.id;});}
+    else{location.hash=b.dataset.id;}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wiki Asgard</title>
+<meta name="description" content="Wiki oficial da Asgard Network: regulamento, termos de uso e política de reembolso.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: barra lateral fixa + coluna de leitura; no Regulamento, numero do artigo na margem como num codigo */
+:root{
+  --bg:#0e1215; --surface:#14191d; --raised:#1b2126; --line:#2a3238; --line-soft:#20272c;
+  --fg:#ebe5d8; --muted:#a3abb1; --gold:#e2b24a; --gold-ink:#f0c868; --crimson:#8e1a12; --crimson-ink:#e86a5c;
+  --mark:rgba(226,178,74,.18); --focus:#f0c868;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Spectral",Georgia,"Times New Roman",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.075rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-ink);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--fg)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.shell{display:grid;grid-template-columns:17rem minmax(0,1fr);min-height:100vh}
+/* barra lateral */
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--surface);border-right:1px solid var(--line);padding:1.5rem 1.25rem 2rem}
+.brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:var(--fg);margin-bottom:1.75rem}
+.brand img{width:44px;height:44px;flex:none}
+.brand b{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.06em;line-height:1.1}
+.brand span{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav-group{margin-bottom:1.5rem}
+.nav-group h2{font-family:var(--ui);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem}
+.nav-group ul{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.nav-group a{display:block;padding:.4rem .6rem;border-radius:6px;color:var(--fg);text-decoration:none;font-family:var(--ui);font-size:.92rem}
+.nav-group a:hover{background:var(--raised)}
+.nav-group a[aria-current="page"]{background:var(--raised);color:var(--gold-ink);box-shadow:inset 2px 0 0 var(--gold)}
+.side small{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);line-height:1.5;margin-top:2rem}
+/* topo no celular */
+.topbar{display:none}
+/* conteudo */
+.main{min-width:0;padding-inline:clamp(1rem,4vw,3.5rem);padding-block:2.5rem 4rem}
+.wrap{max-width:46rem}
+.wrap.wide{max-width:74rem}
+.crumb{font-family:var(--ui);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;letter-spacing:.03em;margin:0 0 .75rem;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;font-family:var(--ui);font-size:.82rem;color:var(--muted);margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
+.lead{font-size:1.15rem;color:var(--fg);max-width:42rem}
+h2{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.05em;color:var(--gold-ink);margin:2.75rem 0 1rem;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.04em;margin:2rem 0 .75rem;color:var(--fg)}
+p,li{max-width:42rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.3rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em;background:var(--raised);border:1px solid var(--line-soft);padding:.05em .35em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+mark.pendente{background:var(--mark);color:var(--fg);padding:0 .25em;border-radius:3px;font-family:var(--ui);font-size:.85em}
+/* tabelas */
+.table{overflow-x:auto;margin:1.25rem 0 2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:.86rem;line-height:1.45}
+th{position:sticky;top:0;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--raised);padding:.7rem .85rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:.6rem .85rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--gold-ink);font-weight:600}
+tr:target td{background:var(--mark)}
+.perm{color:var(--crimson-ink);font-weight:600}
+/* regulamento: artigo com numero na margem */
+.reg-grid{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:start}
+.toc{position:sticky;top:1.5rem;font-family:var(--ui);font-size:.82rem;border-left:1px solid var(--line);padding-left:1rem;max-height:calc(100vh - 3rem);overflow-y:auto}
+.toc b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin:0;max-width:none}
+.toc a{display:block;padding:.22rem 0;color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--fg)}
+.toc .sub a{padding-left:.8rem;font-size:.78rem}
+.find{display:flex;gap:.5rem;align-items:center;margin:0 0 1.5rem;max-width:42rem}
+.find input{flex:1;min-width:0;font:inherit;font-family:var(--ui);font-size:.95rem;padding:.65rem .85rem;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.find input::placeholder{color:var(--muted)}
+.find output{font-family:var(--ui);font-size:.8rem;color:var(--muted);white-space:nowrap}
+.rune{font-family:"Noto Sans Runic","Segoe UI Historic","Segoe UI Symbol",serif;display:flex;align-items:center;gap:1rem;color:var(--gold);font-size:.95rem;letter-spacing:.6em;margin:3rem 0 0;opacity:.75}
+.rune::before,.rune::after{content:"";flex:1;height:1px;background:var(--line)}
+.art{display:grid;grid-template-columns:5.25rem minmax(0,1fr);gap:0 1.25rem;padding:1rem 0;border-top:1px solid var(--line-soft)}
+.art:target{background:linear-gradient(90deg,var(--mark),transparent 70%);border-radius:6px}
+.art-n{font-family:var(--display);font-weight:700;color:var(--gold-ink);font-size:1rem;letter-spacing:.03em;padding-top:.15rem;text-decoration:none;white-space:nowrap}
+.art-n:hover{color:var(--fg)}
+.art-body p:first-child{margin-top:0}
+.art-body > :last-child{margin-bottom:0}
+.art-body ul{list-style:none;padding-left:0}
+.art-body ul li{padding-left:0}
+.art-title{font-weight:600}
+.art-tools{display:flex;gap:1rem;margin-top:.5rem;font-family:var(--ui);font-size:.78rem}
+.art-tools a,.art-tools button{color:var(--muted);text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.art-tools a:hover,.art-tools button:hover{color:var(--gold-ink)}
+.hide{display:none}
+/* inicio */
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.75rem;align-items:center;margin:1rem 0 2.5rem}
+.hero img{width:clamp(88px,14vw,132px);height:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:1.25rem 0 2.5rem}
+.card{display:flex;flex-direction:column;gap:.4rem;padding:1.25rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);text-decoration:none;transition:border-color .2s}
+.card:hover{border-color:var(--gold)}
+.card b{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;color:var(--gold-ink)}
+.card span{font-size:.95rem;color:var(--muted);line-height:1.5}
+.card em{margin-top:auto;padding-top:.5rem;font-style:normal;font-family:var(--ui);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem 2rem;padding:0;margin:1rem 0;list-style:none;font-family:var(--ui);font-size:.92rem}
+.facts li{max-width:none;margin:0;border-top:1px solid var(--line);padding-top:.6rem}
+.facts small{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+footer.foot{margin-top:4rem;padding-top:1.25rem;border-top:1px solid var(--line);font-family:var(--ui);font-size:.78rem;color:var(--muted);max-width:46rem}
+@media (max-width:1180px){.reg-grid{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:1rem}
+  .side .brand{margin-bottom:0}
+  .side nav{display:none;margin-top:1rem}
+  .side.open nav{display:block}
+  .side small{display:none}
+  .side-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .menu{display:inline-flex}
+  .main{padding-block:1.5rem 3rem}
+  .art{grid-template-columns:minmax(0,1fr)}
+  .art-n{padding:0 0 .25rem}
+  .hero{grid-template-columns:minmax(0,1fr)}
+}
+.side-head{display:flex;justify-content:space-between;align-items:center}
+.menu{display:none;font-family:var(--ui);font-size:.85rem;background:var(--raised);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:.4rem .75rem;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side" id="side">
+  <div class="side-head">
+    <a class="brand" href="index.html"><img src="assets/emblema.png" alt=""><span><b>ASGARD</b><span>Wiki oficial</span></span></a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
+  </div>
+  <nav aria-label="Páginas da wiki"><div class="nav-group"><h2>Wiki</h2><ul><li><a href="index.html" aria-current="page">Início</a></li></ul></div><div class="nav-group"><h2>Regras e políticas</h2><ul><li><a href="regulamento.html">Regulamento Geral</a></li><li><a href="termos.html">Termos de Uso</a></li><li><a href="reembolso.html">Política de Reembolso</a></li></ul></div><div class="nav-group"><h2>Links</h2><ul><li><a href="https://asgardnetwork.com.br">Loja e site</a></li><li><a href="https://asgardnetwork.com.br/discord">Discord oficial</a></li></ul></div></nav>
+  <small>Asgard Network · Survival Fimbul<br>Não afiliado à Mojang AB ou à Microsoft.</small>
+</aside>
+<main class="main">
+<div class="wrap">
+<div class="hero"><img src="assets/emblema.png" alt="Emblema da Asgard Network: um corvo sobre um galho de Yggdrasil">
+<div><p class="crumb">Asgard Network · Survival Fimbul</p><h1>Wiki oficial do Asgard</h1>
+<p class="lead">Regras, termos e políticas do servidor em um só lugar. Antes de jogar ou comprar na loja, é aqui que você confere o que vale.</p></div></div>
+<h2>Regras e políticas</h2>
+<div class="cards">
+<a class="card" href="regulamento.html"><b>Regulamento Geral</b><span>Conduta, infrações e penalidades do servidor e do Discord, com a tabela de penas por artigo.</span><em>51 artigos · 2 anexos</em></a>
+<a class="card" href="termos.html"><b>Termos de Uso</b><span>Sua conta, bens virtuais, dados pessoais (LGPD) e responsabilidades.</span><em>14 seções</em></a>
+<a class="card" href="reembolso.html"><b>Política de Reembolso</b><span>Direito de arrependimento de 7 dias, VIPs, Tributos e compras de menores.</span><em>Loja oficial</em></a>
+</div>
+<h2>Onde encontrar a gente</h2>
+<ul class="facts">
+<li><small>Loja e site</small><a href="https://asgardnetwork.com.br">asgardnetwork.com.br</a></li>
+<li><small>Discord e suporte</small><a href="https://asgardnetwork.com.br/discord">asgardnetwork.com.br/discord</a></li>
+<li><small>No jogo</small><code>/regras</code> e <code>/guia</code></li>
+</ul>
+<footer class="foot">Asgard Network · Wiki oficial · Atualizado em 06/10/2026. Dúvidas: abra um ticket no <a href="https://asgardnetwork.com.br/discord">Discord oficial</a>.</footer>
+</div>
+</main>
+</div>
+<script>
+(function(){var b=document.getElementById('menu'),s=document.getElementById('side');if(!b)return;b.addEventListener('click',function(){var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+
+</script>
+</body>
+</html>

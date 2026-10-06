@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Termos de Uso · Wiki Asgard</title>
+<meta name="description" content="Termos de Uso da Asgard Network.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: barra lateral fixa + coluna de leitura; no Regulamento, numero do artigo na margem como num codigo */
+:root{
+  --bg:#0e1215; --surface:#14191d; --raised:#1b2126; --line:#2a3238; --line-soft:#20272c;
+  --fg:#ebe5d8; --muted:#a3abb1; --gold:#e2b24a; --gold-ink:#f0c868; --crimson:#8e1a12; --crimson-ink:#e86a5c;
+  --mark:rgba(226,178,74,.18); --focus:#f0c868;
+  --display:"Cinzel",Georgia,"Times New Roman",serif;
+  --body:"Spectral",Georgia,"Times New Roman",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f4f4f2; --surface:#ffffff; --raised:#f9f8f5; --line:#d9d6ce; --line-soft:#e8e5de;
+  --fg:#1b1e21; --muted:#5a6067; --gold:#8a5a10; --gold-ink:#7a4e0c; --crimson:#8e1a12; --crimson-ink:#8e1a12;
+  --mark:rgba(226,178,74,.28); --focus:#8e1a12; color-scheme:light }
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.075rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-ink);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--fg)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+.shell{display:grid;grid-template-columns:17rem minmax(0,1fr);min-height:100vh}
+/* barra lateral */
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--surface);border-right:1px solid var(--line);padding:1.5rem 1.25rem 2rem}
+.brand{display:flex;gap:.75rem;align-items:center;text-decoration:none;color:var(--fg);margin-bottom:1.75rem}
+.brand img{width:44px;height:44px;flex:none}
+.brand b{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.06em;line-height:1.1}
+.brand span{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.nav-group{margin-bottom:1.5rem}
+.nav-group h2{font-family:var(--ui);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem}
+.nav-group ul{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.nav-group a{display:block;padding:.4rem .6rem;border-radius:6px;color:var(--fg);text-decoration:none;font-family:var(--ui);font-size:.92rem}
+.nav-group a:hover{background:var(--raised)}
+.nav-group a[aria-current="page"]{background:var(--raised);color:var(--gold-ink);box-shadow:inset 2px 0 0 var(--gold)}
+.side small{display:block;font-family:var(--ui);font-size:.72rem;color:var(--muted);line-height:1.5;margin-top:2rem}
+/* topo no celular */
+.topbar{display:none}
+/* conteudo */
+.main{min-width:0;padding-inline:clamp(1rem,4vw,3.5rem);padding-block:2.5rem 4rem}
+.wrap{max-width:46rem}
+.wrap.wide{max-width:74rem}
+.crumb{font-family:var(--ui);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .6rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;letter-spacing:.03em;margin:0 0 .75rem;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;font-family:var(--ui);font-size:.82rem;color:var(--muted);margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
+.lead{font-size:1.15rem;color:var(--fg);max-width:42rem}
+h2{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.05em;color:var(--gold-ink);margin:2.75rem 0 1rem;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.04em;margin:2rem 0 .75rem;color:var(--fg)}
+p,li{max-width:42rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.3rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.86em;background:var(--raised);border:1px solid var(--line-soft);padding:.05em .35em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+mark.pendente{background:var(--mark);color:var(--fg);padding:0 .25em;border-radius:3px;font-family:var(--ui);font-size:.85em}
+/* tabelas */
+.table{overflow-x:auto;margin:1.25rem 0 2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:.86rem;line-height:1.45}
+th{position:sticky;top:0;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--raised);padding:.7rem .85rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:.6rem .85rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--gold-ink);font-weight:600}
+tr:target td{background:var(--mark)}
+.perm{color:var(--crimson-ink);font-weight:600}
+/* regulamento: artigo com numero na margem */
+.reg-grid{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:3rem;align-items:start}
+.toc{position:sticky;top:1.5rem;font-family:var(--ui);font-size:.82rem;border-left:1px solid var(--line);padding-left:1rem;max-height:calc(100vh - 3rem);overflow-y:auto}
+.toc b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc li{margin:0;max-width:none}
+.toc a{display:block;padding:.22rem 0;color:var(--muted);text-decoration:none}
+.toc a:hover{color:var(--fg)}
+.toc .sub a{padding-left:.8rem;font-size:.78rem}
+.find{display:flex;gap:.5rem;align-items:center;margin:0 0 1.5rem;max-width:42rem}
+.find input{flex:1;min-width:0;font:inherit;font-family:var(--ui);font-size:.95rem;padding:.65rem .85rem;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.find input::placeholder{color:var(--muted)}
+.find output{font-family:var(--ui);font-size:.8rem;color:var(--muted);white-space:nowrap}
+.rune{font-family:"Noto Sans Runic","Segoe UI Historic","Segoe UI Symbol",serif;display:flex;align-items:center;gap:1rem;color:var(--gold);font-size:.95rem;letter-spacing:.6em;margin:3rem 0 0;opacity:.75}
+.rune::before,.rune::after{content:"";flex:1;height:1px;background:var(--line)}
+.art{display:grid;grid-template-columns:5.25rem minmax(0,1fr);gap:0 1.25rem;padding:1rem 0;border-top:1px solid var(--line-soft)}
+.art:target{background:linear-gradient(90deg,var(--mark),transparent 70%);border-radius:6px}
+.art-n{font-family:var(--display);font-weight:700;color:var(--gold-ink);font-size:1rem;letter-spacing:.03em;padding-top:.15rem;text-decoration:none;white-space:nowrap}
+.art-n:hover{color:var(--fg)}
+.art-body p:first-child{margin-top:0}
+.art-body > :last-child{margin-bottom:0}
+.art-body ul{list-style:none;padding-left:0}
+.art-body ul li{padding-left:0}
+.art-title{font-weight:600}
+.art-tools{display:flex;gap:1rem;margin-top:.5rem;font-family:var(--ui);font-size:.78rem}
+.art-tools a,.art-tools button{color:var(--muted);text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.art-tools a:hover,.art-tools button:hover{color:var(--gold-ink)}
+.hide{display:none}
+/* inicio */
+.hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.75rem;align-items:center;margin:1rem 0 2.5rem}
+.hero img{width:clamp(88px,14vw,132px);height:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:1.25rem 0 2.5rem}
+.card{display:flex;flex-direction:column;gap:.4rem;padding:1.25rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);text-decoration:none;transition:border-color .2s}
+.card:hover{border-color:var(--gold)}
+.card b{font-family:var(--display);font-size:1.05rem;letter-spacing:.04em;color:var(--gold-ink)}
+.card span{font-size:.95rem;color:var(--muted);line-height:1.5}
+.card em{margin-top:auto;padding-top:.5rem;font-style:normal;font-family:var(--ui);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem 2rem;padding:0;margin:1rem 0;list-style:none;font-family:var(--ui);font-size:.92rem}
+.facts li{max-width:none;margin:0;border-top:1px solid var(--line);padding-top:.6rem}
+.facts small{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+footer.foot{margin-top:4rem;padding-top:1.25rem;border-top:1px solid var(--line);font-family:var(--ui);font-size:.78rem;color:var(--muted);max-width:46rem}
+@media (max-width:1180px){.reg-grid{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:1rem}
+  .side .brand{margin-bottom:0}
+  .side nav{display:none;margin-top:1rem}
+  .side.open nav{display:block}
+  .side small{display:none}
+  .side-head{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .menu{display:inline-flex}
+  .main{padding-block:1.5rem 3rem}
+  .art{grid-template-columns:minmax(0,1fr)}
+  .art-n{padding:0 0 .25rem}
+  .hero{grid-template-columns:minmax(0,1fr)}
+}
+.side-head{display:flex;justify-content:space-between;align-items:center}
+.menu{display:none;font-family:var(--ui);font-size:.85rem;background:var(--raised);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:.4rem .75rem;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side" id="side">
+  <div class="side-head">
+    <a class="brand" href="index.html"><img src="assets/emblema.png" alt=""><span><b>ASGARD</b><span>Wiki oficial</span></span></a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="side">Menu</button>
+  </div>
+  <nav aria-label="Páginas da wiki"><div class="nav-group"><h2>Wiki</h2><ul><li><a href="index.html">Início</a></li></ul></div><div class="nav-group"><h2>Regras e políticas</h2><ul><li><a href="regulamento.html">Regulamento Geral</a></li><li><a href="termos.html" aria-current="page">Termos de Uso</a></li><li><a href="reembolso.html">Política de Reembolso</a></li></ul></div><div class="nav-group"><h2>Links</h2><ul><li><a href="https://asgardnetwork.com.br">Loja e site</a></li><li><a href="https://asgardnetwork.com.br/discord">Discord oficial</a></li></ul></div></nav>
+  <small>Asgard Network · Survival Fimbul<br>Não afiliado à Mojang AB ou à Microsoft.</small>
+</aside>
+<main class="main">
+<div class="wrap">
+<p class="crumb">Regras e políticas</p>
+<h1>Termos de Uso</h1>
+<div class="meta"><span>Atualizado em 06/10/2026</span></div>
+<p class="lead">Ao acessar a Asgard Network (servidor de Minecraft, site ou Discord oficial), você concorda com estes termos. Se não concordar, não use nossos serviços.</p>
+<p><strong>Responsável:</strong> <mark class="pendente">NOME COMPLETO OU RAZÃO SOCIAL</mark> · <mark class="pendente">CPF OU CNPJ</mark> · <mark class="pendente">ENDEREÇO</mark> · <mark class="pendente">E-MAIL DE CONTATO</mark></p>
+<hr/>
+<h2>1. Sobre a Asgard Network</h2>
+<p>A Asgard Network é um servidor de Minecraft independente. Não é um produto oficial do Minecraft e não é aprovada, patrocinada nem associada à Mojang AB ou à Microsoft. Minecraft é marca registrada da Mojang AB.</p>
+<h2>2. Idade e responsáveis</h2>
+<p>Não há idade mínima para jogar no servidor. O Discord oficial segue as regras do próprio Discord, que exige idade mínima de 13 anos.</p>
+<p>Menores de 18 anos precisam de autorização do responsável legal para qualquer compra. Ao comprar, você declara ser maior de 18 anos ou ter essa autorização. O responsável pode pedir o cancelamento de compras não autorizadas a qualquer momento (veja a Política de Reembolso).</p>
+<h2>3. Sua conta</h2>
+<p>Você é responsável pelo que acontece na sua conta, inclusive pelas ações de quem você deixou usá-la e pelas compras feitas por ela. Não nos responsabilizamos por perdas causadas por conta compartilhada. Punições valem para a conta, não importa quem estava jogando.</p>
+<p>Contas secundárias são permitidas para jogar, mas proibidas para burlar punições, inflar ilhas, votar várias vezes ou acumular recompensas.</p>
+<h2>4. Bens virtuais</h2>
+<p>Ao comprar na loja, você adquire uma <strong>licença de uso</strong> de um bem virtual dentro do servidor, e não a propriedade dele.</p>
+<p>Itens, cargos, Tributos, moedas e progresso:
+- Não têm valor monetário fora do servidor
+- Não podem ser vendidos nem trocados por dinheiro real
+- Não podem ser transferidos entre contas
+- Existem apenas dentro da Asgard Network
+- Podem ser removidos em caso de punição, sem reembolso</p>
+<p>Vender ou comprar bens virtuais por fora da loja oficial resulta em banimento permanente.</p>
+<h2>5. Disponibilidade</h2>
+<p>Não garantimos funcionamento sem interrupções. Manutenções, atualizações e quedas podem acontecer. Resets de mundo (wipes) podem ser necessários e serão anunciados com antecedência no Discord.</p>
+<p>Se houver perda de itens ou progresso por falha técnica nossa, restauramos o que for possível a partir de backup ou compensamos de forma equivalente.</p>
+<h2>6. Conduta</h2>
+<p>O uso do servidor depende do cumprimento das nossas Regras, publicadas no <a href="regulamento.html">Regulamento Geral</a>. A quebra das regras pode resultar em advertência, silenciamento (mute), ou banimento, conforme a gravidade. Banimento por quebra de regras não gera direito a reembolso.</p>
+<h2>7. Conteúdo do jogador</h2>
+<p>Ao construir, escrever no chat ou enviar conteúdo no servidor ou no Discord, você garante que o conteúdo é seu e autoriza a Asgard Network a exibi-lo e usá-lo em divulgação (capturas de tela, vídeos e redes sociais), sem custo. Podemos remover conteúdo que viole as regras.</p>
+<h2>8. Propriedade intelectual</h2>
+<p>O conteúdo criado pela Asgard Network (nome, logotipo, identidade visual, texturas e modelos próprios, construções, textos e configurações) é de nossa propriedade. É proibido copiar, redistribuir ou usar comercialmente sem autorização por escrito.</p>
+<h2>9. Dados pessoais (LGPD)</h2>
+<p>Tratamos seus dados de acordo com a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
+<p><strong>O que coletamos e para quê:</strong>
+- <strong>Nick e UUID do Minecraft:</strong> identificar sua conta no jogo e entregar compras
+- <strong>Endereço IP:</strong> segurança, prevenção de fraudes e de burla de punições
+- <strong>E-mail e histórico de compras:</strong> entregar produtos, atender pedidos de suporte e reembolso, e cumprir obrigações legais
+- <strong>Histórico de punições e registros do servidor:</strong> manter a ordem e investigar denúncias</p>
+<p>Dados de pagamento (cartão, conta bancária) são processados pela plataforma de pagamento e não ficam com a gente. O site da loja é operado pela Minecart e pode usar cookies e ferramentas de estatística. O Discord oficial segue a política de privacidade do próprio Discord. Alguns desses serviços podem armazenar dados fora do Brasil.</p>
+<p><strong>Quanto tempo guardamos:</strong> enquanto sua conta estiver ativa ou pelo prazo exigido por lei. Registros de punições ativas ficam guardados enquanto a punição durar.</p>
+<p><strong>Seus direitos:</strong> você pode pedir acesso, correção ou exclusão dos seus dados e informações sobre com quem eles são compartilhados, por ticket no Discord ou pelo e-mail <mark class="pendente">E-MAIL DE CONTATO</mark>. A exclusão não vale para dados que precisamos manter por obrigação legal ou para manter punições ativas.</p>
+<p>Não vendemos seus dados.</p>
+<h2>10. Pagamentos</h2>
+<p>Os pagamentos são processados por plataforma terceirizada. Não temos acesso aos dados completos do seu cartão. A entrega é automática após a confirmação do pagamento. Se não receber, abra um ticket no Discord.</p>
+<p>As condições de cancelamento e reembolso estão na nossa <a href="reembolso.html">Política de Reembolso</a>.</p>
+<h2>11. Limitação de responsabilidade</h2>
+<p>Na medida permitida pela lei, a Asgard Network não se responsabiliza por:
+- Negociações entre jogadores feitas fora das ferramentas oficiais do servidor
+- Conteúdo publicado por jogadores
+- Danos causados por acesso à sua conta por pessoas a quem você deu acesso ou por descuido com sua senha
+- Indisponibilidade temporária do serviço</p>
+<p>Nada nestes termos limita os direitos garantidos pelo Código de Defesa do Consumidor.</p>
+<h2>12. Alterações</h2>
+<p>Podemos atualizar estes termos. Mudanças relevantes serão anunciadas no Discord oficial, com a nova data no fim desta página. Continuar usando os serviços depois da mudança significa concordar com a nova versão.</p>
+<h2>13. Lei e foro</h2>
+<p>Estes termos seguem a legislação brasileira. Fica eleito o foro da comarca de Vila Velha/ES, sem prejuízo do direito do consumidor de entrar com ação no foro do seu próprio domicílio.</p>
+<h2>14. Contato</h2>
+<ul>
+<li>Ticket no Discord oficial: <strong>asgardnetwork.com.br/discord</strong></li>
+<li>E-mail: <mark class="pendente">E-MAIL DE CONTATO</mark></li>
+</ul>
+<footer class="foot">Asgard Network · Wiki oficial · Atualizado em 06/10/2026. Dúvidas: abra um ticket no <a href="https://asgardnetwork.com.br/discord">Discord oficial</a>.</footer>
+</div>
+</main>
+</div>
+<script>
+(function(){var b=document.getElementById('menu'),s=document.getElementById('side');if(!b)return;b.addEventListener('click',function(){var o=s.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});})();
+
+</script>
+</body>
+</html>
